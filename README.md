@@ -3,7 +3,13 @@ Speedtest-auto is a project that is used to perform an hourly speed test. All sp
 
 
 # Installation 
-Unix Package
+Apache2
+    
+    sudo apt-get install apache2
+    sudo apt-get install php libapache2-mod-php
+
+
+Speedtest-cli
 
     sudo apt-get install speedtest-cli
 
@@ -30,5 +36,15 @@ or
     
     ./script.sh
     
-# IN WORK
+    If all runs without of Error then you can run
+    
+    
+    ./start.sh
+    
+    This will start an speedtest at an whole hour and then sleep for 55minutes and start another speedtest at an whole Hour.
+   
+    
+# Screenshots soon.
+    
+
     
