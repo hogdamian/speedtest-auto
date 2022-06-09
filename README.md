@@ -44,7 +44,6 @@ or
     This will start an speedtest at an whole hour and then sleep for 55minutes and start another speedtest at an whole Hour.
    
     
-# Screenshots soon.
     
 
     
