@@ -1,5 +1,5 @@
 # Automatic Speedtests via speedtest.net - with responsive webapplication
-Speedtest-auto is a project that is used to perform an hourly speed test. All speed tests are downloaded as an image file to the server and displayed on a responsive web interface.
+speedtest-auto is a project that is used to perform an hourly speed test. All speed tests are downloaded as an image file to the server and displayed on a responsive web interface.
 
 
 # Installation 
