@@ -22,63 +22,40 @@
 <div class="container">
   <h1>Automatic Speedtests by @damianhog & speedtest.net</h1>
 <?php
-$date ="20";
-$jan ="01-01";
-$feb ="02-01";
-$mae ="03-01";
-$apr ="04-01";
-$mai = "05-01";
-$jun ="06-01";
-$jul ="07-01";
-$aug ="08-01";
-$sep ="09-01";
-$okt ="10-01";
-$nov ="11-01";
-$dez ="12-01";
-$year ="2019";
-$year ="2020";
+$date = date('y'); // get current year as two-digit string (e.g. "21")
+$year = date('Y'); // get current year as four-digit string (e.g. "2021")
+$months = [
+  '01' => 'January',
+  '02' => 'February',
+  '03' => 'March',
+  '04' => 'April',
+  '05' => 'May',
+  '06' => 'June',
+  '07' => 'July',
+  '08' => 'August',
+  '09' => 'September',
+  '10' => 'October',
+  '11' => 'November',
+  '12' => 'December',
+];
 
 $files = scandir('speedtest/');
-sort($files); // this does the sorting
-foreach($files as $file){
-
-//chek if dir name is date
-  if(strpos($file, $date) !== false){
-
-    //check if dirname is the first day in month
-    if(strpos($file, $jan) !== false){
-      echo "<br><p class='speedlist'>January</p>";
-    }else if(strpos($file, $feb) !== false){
-      echo "<br><p class='speedlist'>February</p>";
-    }else if(strpos($file, $mae) !== false){
-      echo "<br><p class='speedlist'>March</p>";
-    }else if(strpos($file, $apr) !== false){
-      echo "<br><p class='speedlist'>April</p>";
-    }else if(strpos($file, $mai) !== false){
-      echo "<br><p class='speedlist'>May</p>";
-    }else if(strpos($file, $jun) !== false){
-      echo "<br><p class='speedlist'>June</p>";
-    }else if(strpos($file, $jul) !== false){
-      echo "<br><p class='speedlist'>July</p>";
-    }else if(strpos($file, $aug) !== false){
-      echo "<br><p class='speedlist'>August</p>";
-    }else if(strpos($file, $sep) !== false){
-      echo "<br><p class='speedlist'>September</p>";
-    }else if(strpos($file, $okt) !== false){
-      echo "<br><p class='speedlist'>October</p>";
-    }else if(strpos($file, $nov) !== false){
-      echo "<br><p class='speedlist'>November</p>";
-    }else if(strpos($file, $dez) !== false){
-      echo "<br><p class='speedlist'>December</p>";
-    }else{
-      //if not the first day in every month then keep going
+sort($files);
+foreach($files as $file) {
+  if (strpos($file, $date) !== false) {
+    $month = substr($file, 0, 2); // get month from filename
+    if (isset($months[$month])) {
+      echo "<br><p class='speedlist'>{$months[$month]}</p>";
     }
-     echo '<p class="speedlist"><a href="speedtest/'.$file.'">'.$file.'</a></p>';
-}else{
-  //If not date in dir name then do nothing
-}
+    $results = file_get_contents("speedtest/$file");
+    list($download, $upload, $ping) = explode(',', $results);
+    echo "Download: $download Mbps<br>";
+    echo "Upload: $upload Mbps<br>";
+    echo "Ping: $ping ms<br>";
+  }
 }
 ?>
+
 </div>
 
 </body>
