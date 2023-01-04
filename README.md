@@ -39,9 +39,9 @@ or
     If all runs without of Error then you can run
     
     
-    ./start.sh
+    ./setup.sh
     
-    This will start an speedtest at an whole hour and then sleep for 55minutes and start another speedtest at an whole Hour.
+    This will create a cronjob for running the script.sh hourly!
    
     
     
